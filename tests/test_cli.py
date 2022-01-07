@@ -3,8 +3,6 @@
 There is an overlap between these tests and the one in test_lib, but these are
 more a placeholder for tests than an example of ideal test strategy.
 """
-
-from __future__ import annotations  # Required for list[] syntax in <3.9
 import subprocess
 
 import pytest

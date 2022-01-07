@@ -3,7 +3,8 @@
 For more information about typer, read the excellent documentation at
 https://typer.tiangolo.com/
 """
-from __future__ import annotations  # Required for list[] syntax in <3.9
+from typing import List
+
 import typer
 
 import python_project_example.lib
@@ -12,7 +13,7 @@ app = typer.Typer()
 
 
 @app.command()
-def add(number: list[float] = typer.Option([])) -> None:
+def add(number: List[float] = typer.Option([])) -> None:
     """Add numbers and print the sum."""
 
     typer.echo("Adding numbers")
