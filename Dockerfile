@@ -23,7 +23,7 @@ COPY . .
 RUN pip3 install --no-cache-dir build
 
 # Build the library.
-RUN python3 -m build .
+RUN python3 -m build --wheel .
 
 ################################################################################
 # Start the runtime image.
@@ -36,12 +36,14 @@ RUN groupadd --gid 1000 --system python_project_example && \
     useradd --uid 1000 --system python_project_example -g python_project_example -s /sbin/nologin
 
 # Copy the wheel file from the builder
-COPY --chown=1000:1000 --from=builder /app/dist/python_project_example-1.0.0-py3-none-any.whl .
+COPY --chown=1000:1000 --from=builder /app/dist/ dist/
 
 # Install the library without dependencies, as we are using the compiled
 # dependencies in "requirements.txt" to pin all versions.
-RUN pip3 install --no-cache-dir --no-deps python_project_example-1.0.0-py3-none-any.whl \
-  && rm python_project_example-1.0.0-py3-none-any.whl
+# Use --no-index and --find-links to have pip look for the module/wheel file in
+# the local directory tree.
+RUN pip3 install --no-cache-dir --no-deps --no-index --find-links=dist python_project_example \
+  && rm -rf dist/
 
 # Copy the compiled requirements and install them. See the two alternatives for
 # different type of packages.
