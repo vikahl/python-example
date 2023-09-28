@@ -1,8 +1,70 @@
 [build-system]
-# >= 51 is required since "entry_points" in setup.cfg was added in this
-# version.
-requires = ["setuptools>=51.0", "wheel"]
+requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "python_project_example"
+description = "Example project generated from vikahl/python-template"
+authors = [
+    { name = "Viktor Rimark",}
+]
+
+urls = { homepage = "https://blog.rxbc.se" }
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "License :: OSI Approved :: MIT License"
+]
+dynamic = ["version", "readme"]
+
+requires-python = ">=3.8"
+
+# Specify the packages required by the project. For libraries, the constraints
+# should be loosely defined as too narrow constraints will make it hard to
+# install the package together with other libraries and will prevent users from
+# getting security updates.
+
+# For services, the dependencies (including transitive) should be compiled with
+# pip-tools. See requirements.txt for details.
+
+
+[project.optional-dependencies]
+# pip-compile doesn't work well with extras referencing the package itself when
+# hashes are required, as the package itself will be added to the list.
+# Therefore the dependency groups "dev" is just for developer convenience and
+# should not list dependencies itself. The compilation in tox lists all extras
+# explicitly (i.e., --extra format,lint,types,test
+dev = [ # All dev dependencies
+    "python_project_example[format]",
+    "python_project_example[lint]",
+    "python_project_example[test]",
+]
+format = [
+  "black",
+  "isort"
+]
+lint = [
+    "black",
+    "isort",
+    "pylint"
+]
+types = [
+    "mypy"
+]
+test = [
+    "pytest",
+    "pytest-cov"
+]
+[project.scripts]
+python_project_example = "python_project_example:app"
+
+[tool.setuptools.dynamic]
+version = {attr = "python_project_example.__version__"}
+readme = {file = "README.md", content-type = "text/markdown"}
 
 [tool.isort]
 # For compatibility with Black
@@ -36,7 +98,7 @@ source = ["src", ".tox/*/site-packages/"]
 show_missing = true
 
 [tool.pylint.'FORMAT']
-# Black defaults to 88 character line length, 
+# Black defaults to 88 character line length,
 max-line-length = 88
 
 [tool.pylint.'MESSAGES_CONTROL']
