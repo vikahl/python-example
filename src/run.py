@@ -11,4 +11,4 @@ import python_project_example
 
 for i in range(10):
     print(f"{i}. Service is running.")
-    time.sleep(30)
+    time.sleep(2)

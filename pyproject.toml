@@ -27,10 +27,9 @@ requires-python = ">=3.8"
 # should be loosely defined as too narrow constraints will make it hard to
 # install the package together with other libraries and will prevent users from
 # getting security updates.
-
-# For services, the dependencies (including transitive) should be compiled with
-# pip-tools. See requirements.txt for details.
-
+dependencies = [
+  "typer"
+]
 
 [project.optional-dependencies]
 # pip-compile doesn't work well with extras referencing the package itself when

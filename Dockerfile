@@ -1,7 +1,7 @@
 # Example Docker image that uses a multistage build to first build the a
 # library of the service.
 
-FROM python:slim AS builder
+FROM python:3.8-slim AS builder
 # It is recommended to use sha256 hash to ensure exact version, as tags can be
 # moved. For example:
 # FROM python:slim@sha256:a7deebfd654d0158999e9ae9a78ce4a9c7090816a2d1600d254fef8b7fd74cac
@@ -29,7 +29,7 @@ RUN python3 -m build --wheel .
 # Start the runtime image.
 # It is recommended to use sha256 here as well (see comment at builder FROM
 # statement).
-FROM python:slim AS runtime
+FROM python:3.8-slim AS runtime
 
 # Create a user and group to not run everything as root.
 RUN groupadd --gid 1000 --system python_project_example && \
@@ -47,7 +47,7 @@ RUN pip3 install --no-cache-dir --no-deps --no-index --find-links=dist python_pr
 
 # Copy the compiled requirements and install them. See the two alternatives for
 # different type of packages.
-COPY --chown=1000:1000 requirements.txt .
+COPY --chown=1000:1000 requirements/requirements-py38.txt requirements.txt
 
 # ALTERNATIVE 1: If the packages requires system dependencies (e.g., compilers)
 # they can be installed and removed within the same layer to keep the
