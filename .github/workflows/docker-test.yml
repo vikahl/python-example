@@ -21,7 +21,7 @@ jobs:
       # This step uses the `docker/build-push-action` action to build the
       # image, _without_ pushing it to a repository.
       - name: Build and push Docker image
-        uses: docker/build-push-action@@v5.0.0
+        uses: docker/build-push-action@v5.0.0
         with:
           context: .
           push: false
