@@ -49,7 +49,8 @@ def test_invoke_as_module() -> None:
 def test_addition(runner: typer.testing.CliRunner) -> None:
     """Test the addition command by adding numbers."""
     result = runner.invoke(
-        python_project_example.app, ["add", "--number", "1", "--number", "2", "--number", "3"]
+        python_project_example.app,
+        ["add", "--number", "1", "--number", "2", "--number", "3"],
     )
     assert "Result: 6" in result.stdout
 
