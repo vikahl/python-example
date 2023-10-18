@@ -4,7 +4,7 @@
 FROM python:3.8-slim AS builder
 # It is recommended to use sha256 hash to ensure exact version, as tags can be
 # moved. For example:
-# FROM python:slim@sha256:a7deebfd654d0158999e9ae9a78ce4a9c7090816a2d1600d254fef8b7fd74cac
+# FROM python:3.8-slim@sha256:a7deebfd654d0158999e9ae9a78ce4a9c7090816a2d1600d254fef8b7fd74cac
 # The tag ("slim") is ignored when the hash ("sha256:…") is used but it makes
 # it easier for humans to read which image is used.
 #

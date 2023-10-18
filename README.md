@@ -1,6 +1,6 @@
 # Python project example
 
-Example project generated from vikahl/python-template.
+Example project generated from vikahl/python-template
 
 
 ---

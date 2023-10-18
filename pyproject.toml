@@ -6,10 +6,11 @@ build-backend = "setuptools.build_meta"
 name = "python_project_example"
 description = "Example project generated from vikahl/python-template"
 authors = [
-    { name = "Viktor Rimark", email = "viktor@example.com" }
+    { name = "Viktor Rimark",email = "viktor@example.com" }
 ]
 
-urls = { homepage = "https://blog.rxbc.se" }
+urls = { homepage = "https://blog.rxbx.se" }
+
 classifiers = [
     "Development Status :: 4 - Beta",
     "Programming Language :: Python",
@@ -17,19 +18,26 @@ classifiers = [
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
-    "License :: OSI Approved :: MIT License"
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)"
 ]
-dynamic = ["version", "readme"]
 
+dynamic = ["version", "readme"]
 requires-python = ">=3.8"
 
 # Specify the packages required by the project. For libraries, the constraints
 # should be loosely defined as too narrow constraints will make it hard to
 # install the package together with other libraries and will prevent users from
 # getting security updates.
+
+# For services, the dependencies (including transitive) should be compiled with
+# pip-tools. See tox environment requirements for details.
+
 dependencies = [
   "typer"
 ]
+
 
 [project.optional-dependencies]
 # pip-compile doesn't work well with extras referencing the package itself when
