@@ -3,7 +3,7 @@
 To learn more about (non-trivial) tests, read Python testing with pytest:
 https://pragprog.com/titles/bopytest2/
 """
-import python_project_example
+import python_example
 
 
 def test_addition() -> None:
@@ -14,4 +14,4 @@ def test_addition() -> None:
     """
     numbers_to_add = (1, 2, 3)
 
-    assert python_project_example.add(*numbers_to_add) == 6
+    assert python_example.add(*numbers_to_add) == 6

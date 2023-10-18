@@ -1,4 +1,4 @@
-# Python project example
+# Python example
 
 Example project generated from vikahl/python-template
 

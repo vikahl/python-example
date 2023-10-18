@@ -7,7 +7,7 @@ from typing import List
 
 import typer
 
-import python_project_example.lib
+import python_example.lib
 
 app = typer.Typer()
 
@@ -17,7 +17,7 @@ def add(number: List[float] = typer.Option([])) -> None:
     """Add numbers and print the sum."""
 
     typer.echo("Adding numbers")
-    result = python_project_example.lib.add(*number)
+    result = python_example.lib.add(*number)
     typer.echo(f"Result: {result}")
 
 

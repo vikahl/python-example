@@ -32,8 +32,8 @@ RUN python3 -m build --wheel .
 FROM python:3.8-slim AS runtime
 
 # Create a user and group to not run everything as root.
-RUN groupadd --gid 1000 --system python_project_example && \
-    useradd --uid 1000 --system python_project_example -g python_project_example -s /sbin/nologin
+RUN groupadd --gid 1000 --system python_example && \
+    useradd --uid 1000 --system python_example -g python_example -s /sbin/nologin
 
 # Copy the wheel file from the builder
 COPY --chown=1000:1000 --from=builder /app/dist/ dist/
@@ -42,7 +42,7 @@ COPY --chown=1000:1000 --from=builder /app/dist/ dist/
 # dependencies in "requirements.txt" to pin all versions.
 # Use --no-index and --find-links to have pip look for the module/wheel file in
 # the local directory tree.
-RUN pip3 install --no-cache-dir --no-deps --no-index --find-links=dist python_project_example \
+RUN pip3 install --no-cache-dir --no-deps --no-index --find-links=dist python_example \
   && rm -rf dist/
 
 # Copy the compiled requirements and install them. See the two alternatives for
@@ -68,7 +68,7 @@ RUN pip3 install --no-deps --require-hashes --no-cache-dir -r requirements.txt \
   && rm requirements.txt
 
 # Set the user
-USER python_project_example
+USER python_example
 
 # Copy the run.py entrypoint.
 # One alternative solution is to specify an entrpoint in pyproject.toml and run

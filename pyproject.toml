@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "python_project_example"
+name = "python_example"
 description = "Example project generated from vikahl/python-template"
 authors = [
     { name = "Viktor Rimark",email = "viktor@example.com" }
@@ -46,9 +46,9 @@ dependencies = [
 # should not list dependencies itself. The compilation in tox lists all extras
 # explicitly (i.e., --extra format,lint,types,test
 dev = [ # All dev dependencies
-    "python_project_example[format]",
-    "python_project_example[lint]",
-    "python_project_example[test]",
+    "python_example[format]",
+    "python_example[lint]",
+    "python_example[test]",
 ]
 format = [
   "black",
@@ -67,10 +67,10 @@ test = [
     "pytest-cov"
 ]
 [project.scripts]
-python_project_example = "python_project_example:app"
+python_example = "python_example:app"
 
 [tool.setuptools.dynamic]
-version = {attr = "python_project_example.__version__"}
+version = {attr = "python_example.__version__"}
 readme = {file = "README.md", content-type = "text/markdown"}
 
 [tool.isort]
