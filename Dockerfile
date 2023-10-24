@@ -1,7 +1,7 @@
 # Example Docker image that uses a multistage build to first build the a
 # library of the service.
 
-FROM python:3.8-slim@sha256:a7deebfd654d0158999e9ae9a78ce4a9c7090816a2d1600d254fef8b7fd74cac AS builder
+FROM python:3.8-slim@sha256:3324295e27596c2a4b3e53615af5ca3b280674208a24906db76812628c2ce4c8 AS builder
 # It is recommended to use sha256 hash to ensure exact version, as tags can be
 # moved. For example:
 # FROM python:3.8-slim@sha256:a7deebfd654d0158999e9ae9a78ce4a9c7090816a2d1600d254fef8b7fd74cac
@@ -29,7 +29,7 @@ RUN python3 -m build --wheel .
 # Start the runtime image.
 # It is recommended to use sha256 here as well (see comment at builder FROM
 # statement).
-FROM python:3.8-slim@sha256:a7deebfd654d0158999e9ae9a78ce4a9c7090816a2d1600d254fef8b7fd74cac AS runtime
+FROM python:3.8-slim@sha256:3324295e27596c2a4b3e53615af5ca3b280674208a24906db76812628c2ce4c8 AS runtime
 
 # Create a user and group to not run everything as root.
 RUN groupadd --gid 1000 --system python_example && \
