@@ -8,4 +8,4 @@ updates:
     ignore:
       # For all images, ignore all major updates
       - dependency-name: "*"
-        update-types: ["version-update:semver-major"]
+        update-types: ["version-update:semver-minor"]
