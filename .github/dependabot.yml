@@ -4,3 +4,8 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+
+    ignore:
+      # For all images, ignore all major updates
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
