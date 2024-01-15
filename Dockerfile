@@ -1,7 +1,7 @@
 # Example Docker image that uses a multistage build to first build the a
 # library of the service.
 
-FROM python:3.8-slim@sha256:514ad38605babc4749a1dfb47a800a9ad30e97795ea3c52390a8cdd8a0d5952c AS builder
+FROM python:3.8-slim@sha256:b893819ad12f8f8b680b515055e182d807b82876c1b25692eca309e7b2c524a4 AS builder
 # It is recommended to use sha256 hash to ensure exact version, as tags can be
 # moved. The tag ("slim") is ignored by Docker when the hash ("sha256:…") is
 # used but it allows Dependabot to skip update across minor versions (e.g.,
@@ -31,7 +31,7 @@ RUN python3 -m build --wheel .
 ################################################################################
 # Start the runtime image.
 # See the notes at builder FROM statement about sha256 hashes and automatic updates.
-FROM python:3.8-slim@sha256:514ad38605babc4749a1dfb47a800a9ad30e97795ea3c52390a8cdd8a0d5952c AS runtime
+FROM python:3.8-slim@sha256:b893819ad12f8f8b680b515055e182d807b82876c1b25692eca309e7b2c524a4 AS runtime
 
 # Create a user and group to not run everything as root.
 RUN groupadd --gid 1000 --system python_example && \
