@@ -3,6 +3,7 @@
 For more information about typer, read the excellent documentation at
 https://typer.tiangolo.com/
 """
+
 from typing import List
 
 import typer
