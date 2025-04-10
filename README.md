@@ -1,5 +1,11 @@
 # Python example
 
+> This cookiecutter is not actively maintained and is not updated with the
+> latest reasonable modern standards. If you want to create a new project
+>  today, look at the instructions in the [Python Developer Tooling Handbook].
+[Python Developer Tooling Handbook]: https://pydevtools.com/handbook/
+
+
 Example project generated from vikahl/python-template
 
 
